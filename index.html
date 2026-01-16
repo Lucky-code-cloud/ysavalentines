@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YSA Valentine's Day Registration</title>
+
+  <style>
+    :root {
+      --black: #000;
+      --red: #c40000;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      scroll-behavior: smooth;
+    }
+
+    /* ================= NAVBAR ================= */
+    header {
+      background: var(--black);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--white);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      background: url("./bg.jpg")
+        center/cover no-repeat;
+      min-height: 100vh;
+      padding: 120px 20px 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3rem;
+      border-radius: 15px;
+      color: var(--white);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    /* Glass Effect */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .time-box {
+      background: rgba(0,0,0,0.6);
+      padding: 1rem;
+      border-radius: 10px;
+      min-width: 70px;
+    }
+
+    .time-box h2 {
+      color: var(--white);
+    }
+
+    /* ================= SECTIONS ================= */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--red);
+    }
+
+    /* ================= FORM ================= */
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    input, select, button {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    button {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--black);
+        flex-direction: column;
+        display: none;
+        padding: 1rem 0;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">YSA Valentine's</div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <nav>
+      <ul id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-overlay">
+    <h1>Valentine's Day YSA Activity</h1>
+    <p>February 15 • 10:00 AM</p>
+
+    <div class="countdown">
+      <div class="time-box"><h2 id="days">0</h2><p>Days</p></div>
+      <div class="time-box"><h2 id="hours">0</h2><p>Hours</p></div>
+      <div class="time-box"><h2 id="minutes">0</h2><p>Min</p></div>
+      <div class="time-box"><h2 id="seconds">0</h2><p>Sec</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section id="details">
+  <h2>Event Details</h2>
+  <p style="text-align:center;">
+    Join fellow Young Single Adults for a Christ-centered Valentine's Day activity.
+    Come and enjoy fellowship, fun activities, and spiritual upliftment.
+  </p>
+</section>
+
+<!-- REGISTRATION -->
+<section id="register">
+  <h2>Registration</h2>
+
+  <form>
+    <input type="text" placeholder="Full Name" required>
+
+    <select required>
+      <option value="">Member or Non-member?</option>
+      <option>Member</option>
+      <option>Non-member</option>
+    </select>
+
+    <div class="two-columns">
+      <input type="date" id="dob" required>
+      <input type="text" id="age" placeholder="Age" readonly>
+    </div>
+
+    <input type="text" placeholder="Ward / Branch">
+
+    <input type="text" placeholder="Coming with (Date / Partner)">
+
+    <button type="submit">Submit Registration</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 YSA Activity | Church of Jesus Christ of Latter-day Saints</p>
+  <button onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    Back to Top
+  </button>
+</footer>
+
+<script>
+  // NAV TOGGLE
+  const toggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  toggle.onclick = () => {
+    navLinks.classList.toggle("show");
+    toggle.textContent = navLinks.classList.contains("show") ? "✖" : "☰";
+  };
+
+  // AGE CALCULATION
+  document.getElementById("dob").addEventListener("change", function () {
+    const dob = new Date(this.value);
+    const diff = Date.now() - dob.getTime();
+    const age = new Date(diff).getUTCFullYear() - 1970;
+    document.getElementById("age").value = age;
+  });
+
+  // COUNTDOWN
+  const eventDate = new Date("February 15, 2026 10:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    document.getElementById("days").innerText =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("hours").innerText =
+      Math.floor((distance / (1000 * 60 * 60)) % 24);
+    document.getElementById("minutes").innerText =
+      Math.floor((distance / (1000 * 60)) % 60);
+    document.getElementById("seconds").innerText =
+      Math.floor((distance / 1000) % 60);
+  }, 1000);
+</script>
+
+</body>
+</html>
