@@ -254,26 +254,57 @@
 <section id="register">
   <h2>Registration</h2>
 
-  <form>
-    <input type="text" placeholder="Full Name" required>
-
-    <select required>
-      <option value="">Member or Non-member?</option>
-      <option>Member</option>
-      <option>Non-member</option>
-    </select>
-
-    <div class="two-columns">
-      <input type="date" id="dob" required>
-      <input type="text" id="age" placeholder="Age" readonly>
+<form action="https://formspree.io/f/mpqlvgrq" method="POST">
+    
+    <label>Membership Status</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="membership" value="Member" required>
+            Member
+        </label>
+        <label>
+            <input type="radio" name="membership" value="Non-member">
+            Non-member
+        </label>
     </div>
 
-    <input type="text" placeholder="Ward / Branch">
+    <label for="name">Full Name</label>
+    <input type="text" name="name" id="name" required>
 
-    <input type="text" placeholder="Coming with (Date / Partner)">
+    <label for="email">Email Address</label>
+    <input type="email" name="email" id="email" required>
 
-    <button type="submit">Submit Registration</button>
-  </form>
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" min="1" required oninput="checkAge()">
+
+    <div id="ageResult" class="age-result"></div>
+
+    
+
+        <!-- Attendance -->
+    <label>Attendance</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="attendance" value="Coming alone" required>
+            Coming alone
+        </label>
+        <label>
+            <input type="radio" name="attendance" value="Coming with a partner">
+            Coming with a partner
+        </label>
+    </div>
+
+    <label for="name">Partner's Name</label>
+    <input type="text" name="name" id="name" required>
+
+    <!-- Optional Formspree settings -->
+    <input type="hidden" name="_subject" value="New Contact Form Submission">
+    <input type="hidden" name="_captcha" value="false">
+
+    <button type="submit">Submit</button>
+</form>
+
+  
 </section>
 
 <!-- FOOTER -->
@@ -318,7 +349,11 @@
     document.getElementById("seconds").innerText =
       Math.floor((distance / 1000) % 60);
   }, 1000);
+
+  //
+  
 </script>
 
 </body>
 </html>
+
