@@ -325,14 +325,6 @@
     toggle.textContent = navLinks.classList.contains("show") ? "✖" : "☰";
   };
 
-  // AGE CALCULATION
-  document.getElementById("dob").addEventListener("change", function () {
-    const dob = new Date(this.value);
-    const diff = Date.now() - dob.getTime();
-    const age = new Date(diff).getUTCFullYear() - 1970;
-    document.getElementById("age").value = age;
-  });
-
   // COUNTDOWN
   const eventDate = new Date("February 15, 2026 10:00:00").getTime();
 
@@ -356,4 +348,3 @@
 
 </body>
 </html>
-
